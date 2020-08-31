@@ -3,9 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import i_reducdr from 'src/interface/reducer';
 import firebase from 'src/firebase';
 
-// slice
-import slice_post, { post } from 'src/store/post';
-
 // action
 import { getmessageList } from 'src/store/messageList';
 
@@ -13,6 +10,7 @@ import { getmessageList } from 'src/store/messageList';
 import Loading from 'src/component/loading';
 import MessageList from 'src/component/messageList';
 import Aside from 'src/component/aside';
+import PostArea from 'src/component/postArea';
 
 export default () => {
   const state = useSelector(state => state) as i_reducdr;
@@ -40,28 +38,7 @@ export default () => {
     <>
       <h1>qiitaチャット</h1>
 
-      <div className="form-group textareaWrapper">
-        <textarea
-          className="form-control"
-          id="textarea"
-          placeholder="メッセージ 150文字以内"
-          maxLength={150}
-          value={state.post.message}
-          onChange={e => dispatch(slice_post.actions.message(e.target.value))}
-          onKeyDown={e =>
-            e.keyCode === 13 ? dispatch(post(state.post.message)) : ''
-          }
-        ></textarea>
-      </div>
-
-      <div className="text-center">
-        <button
-          className="btn btn-primary"
-          onClick={() => dispatch(post(state.post.message))}
-        >
-          投稿
-        </button>
-      </div>
+      <PostArea />
 
       <p>最新100件のメッセージ</p>
 
