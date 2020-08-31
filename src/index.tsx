@@ -7,6 +7,8 @@ import { createBrowserHistory } from 'history';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import thunk from 'redux-thunk';
 import 'babel-polyfill';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.js';
 
 const history = createBrowserHistory();
 
